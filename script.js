@@ -6,7 +6,7 @@ var i = 0,
 
 // Typerwrite text content. Use a pipe to indicate the start of the second line "|".  
 var textArray = [
-  "What do you call an alligator wearing a vest?|An Investigator", 
+  "Do you know what is the dumbest thing I've ever done?|Yes! I left you without a reason", 
   "What do you call a fake noodle?|An Impasta", 
   "Why shouldn't you write with a broken pencil?|Because it's pointless",
   "Why couldn't the pirate finish the alphabet?|He kept getting lost a C",
