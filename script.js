@@ -9,7 +9,7 @@ var textArray = [
   "Do you know what is the dumbest thing I've ever done?|Yes! I left you without a reason", 
   "I have tried to get rid of your figure in your mind.|But still I can't.", 
   "I keep busy every day, does that help?|Unfortunately still not :(",
-  "I don't know if you have a 'replacement' now or not.|If so, I'm also happy. If not.....",
+  "I don't know if you have ehm... a replacement now or not.|If so, I'm also happy. If not.....",
   "I hope you read this.|Really hope ☺",
 ];
 
