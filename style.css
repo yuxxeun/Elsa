@@ -10,10 +10,10 @@ body {
   text-align:center;
   h1 {
     font-size:30px;
-    font-family: 'IBM Plex Serif', serif;
+    font-family: 'IBM Plex Serif', serif !important;
   }
   p {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif !important;
   }
 }
 
@@ -31,12 +31,12 @@ body {
 h1.cursor::after {
   height:24px;
   width:13px;
-  font-family: 'IBM Plex Serif', serif;
+  font-family: 'IBM Plex Serif', serif !important;
 }
 p.cursor::after {
   height:13px;
   width:6px;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif !important;
 }
 
 @keyframes blink {
