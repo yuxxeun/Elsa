@@ -1,16 +1,14 @@
-// values to keep track of the number of letters typed, which quote to use. etc. Don't change these values.
 var i = 0,
     a = 0,
     isBackspacing = false,
     isParagraph = false;
 
-// Typerwrite text content. Use a pipe to indicate the start of the second line "|".  
 var textArray = [
-  "Do you know what is the dumbest thing I've ever done?|Yes! I left you without a reason", 
-  "I have tried to get rid of your figure in your mind.|But still I can't.", 
-  "I keep busy every day, does that help?|Unfortunately still not :(",
-  "I don't know if you have ehm... a replacement now or not.|If so, I'm also happy. If not.....",
-  "I hope you read this.|Really hope ☺",
+  "Do you know what is the dumbest thing I've ever done?|I left you without a reason (actually there). ", 
+  "I have tried to get rid of your figure in my mind.|But still I can't. ", 
+  "I keep myself busy every day, does that help?|Unfortunately still not :( ",
+  "I don't know if you have ehm... a 'replacement' now or not yet.|If U already have it, I'm also happy. But, if haven't ...",
+  "I hope you read this.|Really hope so ☺ ",
 ];
 
 // Speed (in milliseconds) of typing.
@@ -19,22 +17,18 @@ var speedForward = 100, //Typing Speed
     speedBetweenLines = 1000, //Wait between first and second lines
     speedBackspace = 25; //Backspace Speed
 
-//Run the loop
 typeWriter("output", textArray);
 
 function typeWriter(id, ar) {
   var element = $("#" + id),
       aString = ar[a],
-      eHeader = element.children("h1"), //Header element
-      eParagraph = element.children("p"); //Subheader element
+      eHeader = element.children("h1"), 
+      eParagraph = element.children("p"); 
   
-  // Determine if animation should be typing or backspacing
   if (!isBackspacing) {
     
-    // If full string hasn't yet been typed out, continue typing
     if (i < aString.length) {
       
-      // If character about to be typed is a pipe, switch to second line and continue.
       if (aString.charAt(i) == "|") {
         isParagraph = true;
         eHeader.removeClass("cursor");
@@ -42,9 +36,7 @@ function typeWriter(id, ar) {
         i++;
         setTimeout(function(){ typeWriter(id, ar); }, speedBetweenLines);
         
-      // If character isn't a pipe, continue typing.
       } else {
-        // Type header or subheader depending on whether pipe has been detected
         if (!isParagraph) {
           eHeader.text(eHeader.text() + aString.charAt(i));
         } else {
@@ -52,23 +44,15 @@ function typeWriter(id, ar) {
         }
         i++;
         setTimeout(function(){ typeWriter(id, ar); }, speedForward);
-      }
-      
-    // If full string has been typed, switch to backspace mode.
+      } 
     } else if (i == aString.length) {
       
       isBackspacing = true;
-      setTimeout(function(){ typeWriter(id, ar); }, speedWait);
-      
+      setTimeout(function(){ typeWriter(id, ar); }, speedWait); 
     }
     
-  // If backspacing is enabled
   } else {
-    
-    // If either the header or the paragraph still has text, continue backspacing
-    if (eHeader.text().length > 0 || eParagraph.text().length > 0) {
-      
-      // If paragraph still has text, continue erasing, otherwise switch to the header.
+      if (eHeader.text().length > 0 || eParagraph.text().length > 0) {
       if (eParagraph.text().length > 0) {
         eParagraph.text(eParagraph.text().substring(0, eParagraph.text().length - 1));
       } else if (eHeader.text().length > 0) {
@@ -77,16 +61,13 @@ function typeWriter(id, ar) {
         eHeader.text(eHeader.text().substring(0, eHeader.text().length - 1));
       }
       setTimeout(function(){ typeWriter(id, ar); }, speedBackspace);
-    
-    // If neither head or paragraph still has text, switch to next quote in array and start typing.
     } else { 
       
       isBackspacing = false;
       i = 0;
       isParagraph = false;
-      a = (a + 1) % ar.length; //Moves to next position in array, always looping back to 0
+      a = (a + 1) % ar.length;
       setTimeout(function(){ typeWriter(id, ar); }, 50);
-      
     }
   }
 }
